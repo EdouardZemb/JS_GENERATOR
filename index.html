@@ -7,10 +7,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form onsubmit="return formGenerator()">
+    <!-- onsubmit="return formGenerator()" -->
+    <form name="my form" onsubmit="return false">
         <label for="numberPersons">How many are you ?</label>
-        <input id="numberPersons" type="text">
-        <input type="submit" value="Continuer"> <!-- onclick="formGenerator()"-->
+        <input id="numberPersons" type="number">
+        <input type="submit" value="Continuer" onclick="formGenerator()" > <!-- onclick="formGenerator()"-->
     </form>
     <script src="script/script.js"></script>
 </body>

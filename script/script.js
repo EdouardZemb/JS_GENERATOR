@@ -4,12 +4,12 @@
     // cette fonction s'active si le bouton continuer est cliqué
 function formGenerator(){ 
     // on créé une constante qui récupère la valeure saisie dans l'input "numbrePersons"
-    var resultNumberPersons = document.getElementById('numberPersons').value; 
-    console.log(resultNumberPersons);
+    const resultNumberPersons = document.getElementById('numberPersons').value; 
+    console.log('number : '+resultNumberPersons);
 
     // si cette valeur est un nombre et si ce nombre est supérieur à 1
     if (resultNumberPersons>1){  
-        var i = 0;
+        let i = 0;
         while (i<resultNumberPersons){
             i++;
             document.getElementsByTagName('form')[0].appendChild(document.createElement('input', 'text'));    
