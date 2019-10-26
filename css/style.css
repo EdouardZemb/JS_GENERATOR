@@ -1,0 +1,17 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+main
+{
+    display: flex;
+    margin: 0%;
+}
+form
+{
+    display: flex;
+    flex-direction: column;
+}
