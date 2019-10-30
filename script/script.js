@@ -1,105 +1,57 @@
 
-    //  - J'essaye ici de créer une fonction qui génère des balises input dans le DOM
-    //  - Quand le form est 'submit', la fonction génère un nombre de balise 'input' correspondant à la valeur entrée dans l'input 'numbrePersons */
-    //  -cette fonction s'active si le bouton continuer est cliqué
-let form = document.getElementsByTagName('main')[0].appendChild(document.createElement('form'));
-form.setAttribute('action', '',);
-form.setAttribute('method','post');
-// form.setAttribute('onsubmit','getInputValue()')
 
-let label = document.getElementsByTagName('form')[0].appendChild(document.createElement('label'));
-label.setAttribute('for','group_size')
-label.innerHTML = 'Combien êtes vous ?'
+let button = document.getElementById('button');
+button.addEventListener("click", function generateRandomTeams(){
 
-let input = document.getElementsByTagName('form')[0].appendChild(document.createElement('input'));
-input.setAttribute('type', 'text',);
-input.setAttribute('id','group_size');
-input.setAttribute('name','group_size');
-input.setAttribute('value','');
-input.setAttribute('placeholder','How many are you ?');
-input.required = true;
 
-let button = document.getElementsByTagName('main')[0].appendChild(document.createElement('button'));
-button.setAttribute('type','submit');
-button.setAttribute('value','submit');
-button.innerHTML = 'Envoyer';
+    //  let check = [Mouafak=false,Jordan=false,Madina=false,Damien=false,Antonin=false,Allan=false,Kevin=false,Cindy=false,Thibaud=false,Anais=false,Victoria=false,Justin=false,
+    //  Jeremie=false,Erwan=false,Lucas1=false,Naiim=false,Théo=false,Mehdi=false,Joel=false,Deborah=false];
 
-button.addEventListener('click', getInputValue);
+    let prenom = ['Mouafak','Jordan','Madina','Damien','Antonin','Allan','Kévin','Cindy','Thibaud','Anais','Victoria','Justin',
+        'Jérémie','Erwan','Lucas 1','Naiim','Théo','Mehdi','Joel','Deborah','Edouard','Lucas 2', 'Elève 1'];
 
-function getInputValue()
-{
-    let group_size = document.getElementsByTagName('input')[0].value;
-    groupe_size = parseInt(group_size);
-    
-    if(isNaN(group_size) || groupe_size <= 2)
-    {
-        alert('Veuillez saisir un nombre supérieur à 2');
-    }
-    if(group_size >= 2)
-    {
-        let group_size_sqrt = Math.sqrt(group_size);
+    let groupNumber = 0;
 
-        for(let possible_groups_sizes = 2; possible_groups_sizes < group_size_sqrt; possible_groups_sizes++)
-        {
-            let all_deviders = group_size / possible_groups_sizes;
-            //console.log(d);
-            all_int_deviders = parseInt(all_deviders);
-            //console.log(d);
-            let result = all_int_deviders * possible_groups_sizes;
-            //console.log(r);
+    // dans cette boucle l'initialisation est une variable dont la valeur est la longueur
+    for (let limit = prenom.length; limit >= 0; limit--) {
 
-            if(result == group_size)
-            {
+        let randomNumber1 = Math.floor(Math.random() * Math.floor(limit));
 
-                console.log('vous pouvez faire des groupes de ');
-                console.log(possible_groups_sizes);
+        let randomNumber2 = Math.floor(Math.random() * Math.floor(limit));
 
-                // console.log(valid_groups_sizes);
-                
-            }
-            else
-            {
-                console.log('Vous ne pouvzez pas faire de groupe de');
-                console.log(possible_groups_sizes);
-            }  
-        }     
-    }
-    // else
-    // {
-    //     alert('La valeur saisie est incorrecte !')
-    // }
-}
+        // console.log(prenom);
+
+        if (prenom[randomNumber1] && prenom[randomNumber2] && prenom[randomNumber1] != prenom[randomNumber2]) {
+
+            groupNumber++;
+
+            let div = document.createElement("div");
+
+            let newDiv = document.getElementsByTagName('main')[0].appendChild(div);
+
+            newDiv.innerHTML = 'l\'équipe ' + groupNumber + ' est composée de ' + prenom[randomNumber1] +' et ' + prenom[randomNumber2];
 
 
 
-//value="<?php echo $category['category_name'];?>"
-/*
-function formGenerator(){ 
-    // on créé une constante qui récupère la valeure saisie dans l'input "numbrePersons"
-    const resultNumberPersons = document.getElementById('numberPersons').value; 
-    // console.log(resultNumberPersons);
-    // console.log(typeof resultNumberPersons);
+            console.log(randomNumber1, randomNumber2)
+            let removed = prenom.splice(randomNumber1, 1);
 
-    //  -si cette valeur est un nombre et si ce nombre est supérieur à 1
-    if (resultNumberPersons>1){ 
-        //  -création d'un nouveai formulaire 
-        let newForm = document.getElementsByTagName('main')[0].appendChild(document.createElement('form'));
-        newForm.setAttribute('id', 'namesForm');
-        let i = 0;
-        while (i<resultNumberPersons){
-            i++;
-            let firstName = document.getElementById('namesForm').appendChild(document.createElement('input')); 
-            firstName.setAttribute('class', 'firstName');
-            let lastName = document.getElementById('namesForm').appendChild(document.createElement('input')); 
-            lastName.setAttribute('class', 'lastName');
+
+
+            removed = prenom.splice(randomNumber2, 1);
+
+            console.log(removed, prenom);
+
         }
-    /* // création d'un nouveau bouton
-    let button = document.getElementById('namesForm').appendChild(document.createElement('button'));
-    button.setAttribute('class', 'button'); */
-    //  -création d'une variable contenat l'élément numberForm
-    /*let numberForm = document.getElementsByClassName('numberForm')[0];
-    //  -suppression de l'élement numberForm
-    numberForm.parentNode.removeChild(numberForm);   
+        // if (index > -1) {
+        // prenom.splice(index, 1);
+        //}
+
+        // console.log(removed);
+        // console.log(removed2);
+
     }
-}
-document.querySelector(".button").addEventListener("click", formGenerator);*/
+
+});
+
+
