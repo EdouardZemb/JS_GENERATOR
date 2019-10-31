@@ -1,16 +1,21 @@
 
 
+const prenomInit = ['Mouafak','Jordan','Madina','Damien','Antonin','Allan','Kévin','Cindy','Thibaud','Anais','Victoria','Justin',
+    'Jérémie','Erwan','Lucas 1','Naiim','Théo','Mehdi','Joel','Deborah','Edouard','Lucas 2', 'Elève 1','Eleve 2','Eleve 3','Eleve 4'];
+
+const nombreCoequipiersInit = 2;
+
 let button = document.getElementById('button');
 button.addEventListener("click", function generateRandomTeams(){
 
-    let prenom = ['Mouafak','Jordan','Madina','Damien','Antonin','Allan','Kévin','Cindy','Thibaud','Anais','Victoria','Justin',
-        'Jérémie','Erwan','Lucas 1','Naiim','Théo','Mehdi','Joel','Deborah','Edouard','Lucas 2', 'Elève 1','Eleve 2','Eleve 3','Eleve 4'];
+    let prenom = prenomInit;
 
     let groupNumber = 0;
 
-    let nombreCoequipiers = 2;
+    let nombreCoequipiers = nombreCoequipiersInit;
 
-    // dans cette boucle l'initialisation est une variable dont la valeur est la longueur
+    // dans cette boucle l'initialisation est une variable (limit) dont la valeur est la longueur initiale de la variable prenom
+    //
     for (let limit = prenom.length; limit >= 0; limit -= nombreCoequipiers) {
         let randomNumber1 = Math.floor(Math.random() * Math.floor(limit));
 
@@ -38,7 +43,7 @@ button.addEventListener("click", function generateRandomTeams(){
 
             p.innerHTML = 'Team ' + groupNumber;
 
-            p2 = newDiv.appendChild(document.createElement('p'));
+            let p2 = newDiv.appendChild(document.createElement('p'));
 
             p2.innerHTML = equipier1 + ' et ' + equipier2;
 
