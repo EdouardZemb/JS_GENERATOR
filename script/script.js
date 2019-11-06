@@ -9,10 +9,10 @@ function randomizeArray(originalArray)
     // ce tableau accueille les valeurs renvoyées par la boucle for
     let  randomizeArray = [];
     // cette boucle tourne tant que le tableau copyArray n'est pas vide
-    for (let i = copyArray.length; i > 0; i--)
+    for (let valuesLeftInTheArray = copyArray.length; valuesLeftInTheArray > 0; valuesLeftInTheArray--)
     {
         // cette constante contient un nombre aléatoire généré entre 0 et la longueur du tableau copyArray
-        const randomNumber = Math.floor(Math.random() * Math.floor(i));
+        const randomNumber = Math.floor(Math.random() * Math.floor(valuesLeftInTheArray));
         // cette constante contient la valeur du tableau copyArray corespondant à l'index randomNumber
         const randomValue = copyArray[randomNumber];
         // la valeur randomValue est stockée dans le tableau randomizeArray
@@ -34,7 +34,7 @@ function arraySeparator(originalArray, valuesPerArray)
     let copyArray = originalArray.slice();
     // cette variable crée un nouveau tableau vide
     // ce tableau accueille les valeurs/tableaux renvoyés par la boucle for
-    let allArraysInOne = [];
+    const allArraysInOne = [];
     // cette boucle tourne tant que la valeur de la variable i est inférieure à la longueur du tableau en argument de la fonction
     // a chaque tour la valeure de la variable i augmente de la valeur de l'argument teamMatesPerTeam
     for (let i = 0 ; i < originalArray.length ; i += valuesPerArray)
@@ -58,138 +58,66 @@ function arraySeparator(originalArray, valuesPerArray)
     // séparées en tableau dont la taille est définie par la valeur de valuesPerArray
     return allArraysInOne;
 }
+function displayArrays(originalArray)
+{
+    let copyArray = originalArray.slice();
 
-const teamMates = ['Mouafak','Jordan','Madina','Damien','Antonin','Allan','Kévin','Cindy','Thibaud','Anais','Victoria','Justin',
-    'Jérémie','Erwan','Lucas 1','Naiim','Théo','Mehdi','Joel','Deborah','Edouard','Lucas 2', 'Elève 1','Eleve 2','Eleve 3'];
+    let teams = document.querySelector('#teams');
 
-const teamMatesPerTeam = 2;
+    teams.innerHTML = "";
 
-const a = randomizeArray(teamMates);
-console.log(a);
-const b = arraySeparator(a, teamMatesPerTeam);
-console.log(b);
+    let numbreElement = 0;
+
+    copyArray.forEach(function (element)
+    {
+        numbreElement++;
 
 
 
-/*
-document
-    .getElementById('button');
-    .addEventListener("click",
+        let newDiv = document.createElement("div");
 
+        newDiv.setAttribute("class","team");
+
+        let newH3 = document.createElement("h3");
+
+        let newTitle = document.createTextNode("Team "+numbreElement);
+
+        let newHr = document.createElement("hr");
+
+        let newPara = document.createElement("p");
+
+        let newText = document.createTextNode(element);
+
+        newH3.appendChild(newTitle);
+
+        newDiv.appendChild(newH3);
+
+        newDiv.appendChild(newHr);
+
+        newPara.appendChild(newText);
+
+        newDiv.appendChild(newPara);
+
+        let selectDiv = document.getElementById("teams");
+
+        selectDiv.appendChild(newDiv);
+    })
+}
+
+
+const button = document.querySelector('#formSubmit');
+button.addEventListener("click", (function(submit){
+    submit.preventDefault();
 }));
 
-function generateRandomTeams()
-{
-    let numberTeams = teamMates.length/TeamMatesPerTeam;
+button.addEventListener("click", (function () {
 
-    let teamMatesModif = teamMates.slice();
+        const teamMates = ['Mouafak','Jordan','Madina','Damien','Antonin','Allan','Kévin','Cindy','Thibaud','Anais','Victoria','Justin',
+            'Jérémie','Erwan','Lucas 1','Naiim','Théo','Mehdi','Joel','Deborah','Edouard','Lucas 2', 'Elève 1','Eleve 2','Eleve 3'];
+        const teamMatesPerTeam = 2;
 
-    console.log(numberTeams);
-
-    for (let numberTeamsCreated = 1; numberTeamsCreated <= numberTeams; numberTeamsCreated++)
-    {
-
-        let p = document.createElement('p');
-
-        let newDiv = document.getElementById('all_teams').appendChild(document.createElement('div'));
-
-        newDiv.setAttribute('class', 'equipe');
-
-        p = newDiv.appendChild(document.createElement('p'));
-
-        p.innerHTML = 'Team ' + numberTeamsCreated;
-
-        for (let TeamMatesCreated = 1; TeamMatesCreated <= TeamMatesPerTeam; TeamMatesCreated++ )
-        {
-
-            let randomNumber = Math.floor(Math.random() * Math.floor(teamMatesModif.length-1));
-
-            let teamMate = teamMates[randomNumber];
-
-            let removed = teamMatesModif.splice(randomNumber, 1);
-
-            let p2 = newDiv.appendChild(document.createElement('p'));
-
-            p2.innerHTML = teamMate;
-        }
-    }
-});
-
-const prenomInit = ['Mouafak','Jordan','Madina','Damien','Antonin','Allan','Kévin','Cindy','Thibaud','Anais','Victoria','Justin',
-    'Jérémie','Erwan','Lucas 1','Naiim','Théo','Mehdi','Joel','Deborah','Edouard','Lucas 2', 'Elève 1','Eleve 2','Eleve 3','Eleve 4'];
-
-const nombreCoequipiersInit = 2;
-
-let button = document.getElementById('button');
-button.addEventListener("click", function generateRandomTeams(){
-
-    let prenom = prenomInit;
-
-    let groupNumber = 0;
-
-    let nombreCoequipiers = nombreCoequipiersInit;
-
-    // dans cette boucle l'initialisation est une variable (limit) dont la valeur est la longueur initiale de la variable prenom
-    //
-
-    function randomArray(originalArray) {
-
-        let copyArray = originalArray.slice();
-
-        let  newValue = [];
-
-        for (let i = copyArray.length; limit >= 0; i--) {
-
-            let randomNumber = Math.floor(Math.random() * Math.floor(i));
-
-            let randomValue = copyArray[randomNumber];
-
-            newValue = ['randomValue']
-
-            let removed = copyArray.splice(randomNumber, 1);)
-            }
-
-        return newValue;
-
-
-    for (let limit = prenom.length; limit >= 0; limit -= nombreCoequipiers) {
-        let randomNumber1 = Math.floor(Math.random() * Math.floor(limit));
-
-        let equipier1 = prenom[randomNumber1];
-
-        let removed = prenom.splice(randomNumber1, 1);
-
-        let randomNumber2 = Math.floor(Math.random() * Math.floor(limit-1));
-
-        let equipier2 = prenom[randomNumber2];
-
-        removed = prenom.splice(randomNumber2, 1);
-
-        if (equipier1 && equipier2) {
-
-            groupNumber++;
-
-            let p = document.createElement('p');
-
-            let newDiv = document.getElementById('all_teams').appendChild(document.createElement('div'));
-
-            newDiv.setAttribute('class', 'equipe');
-
-            p = newDiv.appendChild(document.createElement('p'));
-
-            p.innerHTML = 'Team ' + groupNumber;
-
-            let p2 = newDiv.appendChild(document.createElement('p'));
-
-            p2.innerHTML = equipier1 + ' et ' + equipier2;
-
-                console.log(prenom);
-        }
-
-    }
-
-});*/
-
-
-
-
+        const a = randomizeArray(teamMates);
+        const b = arraySeparator(a, teamMatesPerTeam);
+        const c = displayArrays(b);
+        return c;
+    }));

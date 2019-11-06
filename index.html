@@ -3,19 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>team builder</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <header>
-
+    <p>team</p>
+    <p>builder</p>
 </header>
     <main>
-        <div id="central">
-            <button id="button" type="button" onclick="">Team Builder</button>
-        </div>
-        <div id='all_teams'>
+        <form action="" method="post">
+            <div id="settings1">
+                <label for="totalParticipants">How many are you ?</label>
+                <input type="number"
+                       name="totalParticipants"
+                       id="totalParticipants"
+                       list=""
+                       value="35"
+                >
+            </div>
+            <div id="settings2">
+                <label for="participantsPerTeam">How many team mates <br>per group do you want ?</label>
+                <input type="number"
+                       name="participantsPerTeam"
+                       id="participantsPerTeam"
+                       list=""
+                       value="05"
+                >
+                <button id="formSubmit" type="submit">Submit</button>
+            </div>
+        </form>
+        <div id="teams">
 
         </div>
     </main>
