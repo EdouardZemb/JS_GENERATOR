@@ -72,8 +72,6 @@ function displayArrays(originalArray)
     {
         numbreElement++;
 
-
-
         let newDiv = document.createElement("div");
 
         newDiv.setAttribute("class","team");
@@ -103,21 +101,48 @@ function displayArrays(originalArray)
         selectDiv.appendChild(newDiv);
     })
 }
+function getValueById(id){
+    return idValue = document.querySelector('#'+id).value;
+}
 
+(function (){
+    const button = document.querySelector('#form1Submit');
+    button.addEventListener("click", (function(submit){
 
-const button = document.querySelector('#formSubmit');
-button.addEventListener("click", (function(submit){
-    submit.preventDefault();
-}));
+        submit.preventDefault();
 
-button.addEventListener("click", (function () {
+        const teamMatesPerTeam = getValueById('teamMatesPerTeam');
 
-        const teamMates = ['Mouafak','Jordan','Madina','Damien','Antonin','Allan','Kévin','Cindy','Thibaud','Anais','Victoria','Justin',
-            'Jérémie','Erwan','Lucas 1','Naiim','Théo','Mehdi','Joel','Deborah','Edouard','Lucas 2', 'Elève 1','Eleve 2','Eleve 3'];
-        const teamMatesPerTeam = 2;
+        const totalParticipants = getValueById('totalParticipants');
 
-        const a = randomizeArray(teamMates);
-        const b = arraySeparator(a, teamMatesPerTeam);
-        const c = displayArrays(b);
-        return c;
+        const newForm = document.querySelector('main').appendChild(document.createElement('form'));
+
+        newForm.setAttribute('id', 'form2');
+
+        for(let i = 0 ; i < totalParticipants ; i++) {
+            const newdiv = document.querySelector('#form2').appendChild(document.createElement('div'));
+            const newLabel = newdiv.appendChild(document.createElement('label'))
+            const newInput = newdiv.appendChild(document.createElement('input'))
+            newInput.setAttribute('id', 'teamMates'+(i+1));
+            newInput.setAttribute('value', 'Team Mate '+(i+1));
+            newLabel.setAttribute('for', 'teamMates'+(i+1));
+            newLabel.innerText = 'Team Mate '+(i+1)+' : ';
+        }
+
+        // document.querySelector('#form2').appendChild(document.createElement('button'));
+
     }));
+
+})();
+
+/*
+const teamMates = ['Mouafak','Jordan','Madina','Damien','Antonin','Allan','Kévin','Cindy','Thibaud','Anais','Victoria','Justin',
+    'Jérémie','Erwan','Lucas 1','Naiim','Théo','Mehdi','Joel','Deborah','Edouard','Lucas 2', 'Elève 1','Eleve 2','Eleve 3'];
+
+let teamMatesPerTeam = 2;
+
+const a = randomizeArray(teamMates);
+const b = arraySeparator(a, teamMatesPerTeam);
+const c = displayArrays(b);
+
+*/

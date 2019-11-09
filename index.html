@@ -8,36 +8,34 @@
 </head>
 <body>
 <header>
-    <p>team</p>
-    <p>builder</p>
+    <div>
+        <p>team</p>
+        <p>builder</p>
+    </div>
 </header>
     <main>
-        <form action="" method="post">
+        <form id="form1" action="" method="post">
             <div id="settings1">
-                <label for="totalParticipants">How many are you ?</label>
+                <label for="totalParticipants" class="label">How many are you ?</label>
                 <input type="number"
                        name="totalParticipants"
                        id="totalParticipants"
                        list=""
-                       value="35"
-                >
+                        value="35">
             </div>
             <div id="settings2">
-                <label for="participantsPerTeam">How many team mates <br>per group do you want ?</label>
+                <label for="teamMatesPerTeam" class="label">How many team mates <br>per group do you want ?</label>
                 <input type="number"
-                       name="participantsPerTeam"
-                       id="participantsPerTeam"
+                       name="teamMatesPerTeam"
+                       id="teamMatesPerTeam"
                        list=""
-                       value="05"
-                >
-                <button id="formSubmit" type="submit">Submit</button>
+                       value="2">
+                <button id="form1Submit" type="submit">Submit</button>
             </div>
         </form>
         <div id="teams">
-
         </div>
     </main>
-
     <script src="script/script.js"></script>
 </body>
 </html>

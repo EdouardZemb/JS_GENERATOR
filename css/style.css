@@ -1,13 +1,17 @@
+:root
+{
+    font-family: Bahnschrift, sans-serif;
+    font-size: 16px;
+}
 html
 {
-    height: 100vh;
+    height: 40rem;
 }
 body
 {
     display: flex;
     flex-direction: column;
     margin: 0;
-    font-family: Bahnschrift, sans-serif;
     color: white;
     height: 100%;
     min-height: 100vh;
@@ -17,7 +21,12 @@ header
 {
     background-color: #4FB880;
     padding: 0.5em;
-    height: 5%;
+    height: 2rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+    align-items: flex-start;
+    justify-content: center;
 }
 header p
 {
@@ -30,25 +39,52 @@ main
     height: 95%;
     display: flex;
 }
-form
+#form1
 {
     height: 100%;
-    width: 33%;
+    width: 23rem;
 }
 #settings1
 {
     display: flex;
     flex-direction: column;
     background-color: #65CF82;
-    height:50%;
+    min-height:50%;
+    width:100%;
+    justify-content: center;
+    align-items: flex-end;
+}
+.label
+{
+    font-size: 1.7rem;
 }
 #settings2
 {
     background-color: #B3E985;
     height:50%;
+    width:100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
 }
+#form2
+{
+    display: flex;
+    flex-direction: column;
+    width: 23rem;
+    align-items: flex-end;
+    background-color: white;
+    color: dimgray;
+    overflow: scroll;
+}
+#form2 div{
+    padding: 1rem;
+}
+#form2 input{
+    border-radius: 0.2rem;
+}
+
 #settings2 input
 {
     background-color: #B3E985;
@@ -57,9 +93,6 @@ form
     font-size: 5em;
     font-weight: lighter;
     width: 40%;
-    position: relative;
-    top: 1.5em;
-    left: 0.5em;
 }
 
 #settings1 input
@@ -70,11 +103,9 @@ form
     font-size: 5em;
     font-weight: lighter;
     width: 40%;
-    position: relative;
-    top: 1.8em;
-    left: 2.2em;
 }
-#settings1 label
+
+/*#settings1 label
 {
     font-size: 1.5em;
     font-weight: lighter;
@@ -89,7 +120,7 @@ form
     position: relative;
     top: 3em;
     left: 1.5em;
-}
+}*/
 #teams
 {
     display: flex;
