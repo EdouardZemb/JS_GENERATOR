@@ -1,111 +1,113 @@
-// cette fonction permet de renvoyer un tableau contenant les mêmes valeurs que le tableau en argument
+(function (){
+    // cette fonction permet de renvoyer un tableau contenant les mêmes valeurs que le tableau en argument
 // mais dans un ordre différent
-function randomizeArray(originalArray)
-{
-    // cette variable copie les valeurs de la variable en argument
-    // slice() permet d'éviter de modifier la variable originelle
-    let copyArray = originalArray.slice();
-    // cette variable crée un nouveau tableau vide
-    // ce tableau accueille les valeurs renvoyées par la boucle for
-    let  randomizeArray = [];
-    // cette boucle tourne tant que le tableau copyArray n'est pas vide
-    for (let valuesLeftInTheArray = copyArray.length; valuesLeftInTheArray > 0; valuesLeftInTheArray--)
+    const randomizeArray = originalArray =>
     {
-        // cette constante contient un nombre aléatoire généré entre 0 et la longueur du tableau copyArray
-        const randomNumber = Math.floor(Math.random() * Math.floor(valuesLeftInTheArray));
-        // cette constante contient la valeur du tableau copyArray corespondant à l'index randomNumber
-        const randomValue = copyArray[randomNumber];
-        // la valeur randomValue est stockée dans le tableau randomizeArray
-        randomizeArray.push(randomValue);
-        // la valeur randomValue est supprimée du tableau copyArray
-        // a chaque tour la longueur du tableau copyArray est réduite de 1
-        copyArray.splice(randomNumber, 1)
-    }
-    // la fonction renvoie le tableau randomizeArray contenant toutes les valeurs du tableau originalArray
-    // dans un ordre différent
-    return randomizeArray;
-}
-// cette fonction permet de séparer les valeurs contenues dans le tableau en argument en plusieurs tableaux de la même taille
-// la taille des tableaux renvoyés est définie par l'argument valuesPerArray
-function arraySeparator(originalArray, valuesPerArray)
-{
-    // cette variable copie les valeurs de la variable en argument
-    // slice() permet d'éviter de modifier la variable originelle
-    let copyArray = originalArray.slice();
-    // cette variable crée un nouveau tableau vide
-    // ce tableau accueille les valeurs/tableaux renvoyés par la boucle for
-    const allArraysInOne = [];
-    // cette boucle tourne tant que la valeur de la variable i est inférieure à la longueur du tableau en argument de la fonction
-    // a chaque tour la valeure de la variable i augmente de la valeur de l'argument teamMatesPerTeam
-    for (let i = 0 ; i < originalArray.length ; i += valuesPerArray)
-    {
+        // cette variable copie les valeurs de la variable en argument
+        // slice() permet d'éviter de modifier la variable originelle
+        let copyArray = originalArray.slice();
         // cette variable crée un nouveau tableau vide
         // ce tableau accueille les valeurs renvoyées par la boucle for
-        let newArray = [];
-        // cette boucle tourne tant que la valeur de la variable b est inférieur à la valeur de la variable valuesPerArray
-        for (let b = 0 ; b < valuesPerArray; b++)
+        let  randomizeArray = [];
+        // cette boucle tourne tant que le tableau copyArray n'est pas vide
+        for (let valuesLeftInTheArray = copyArray.length; valuesLeftInTheArray > 0; valuesLeftInTheArray--)
         {
-            // la fonction push permet ici de stocker la valeur correspondant à l'index 0 dans le tableau copyArray
-            newArray.push(copyArray[0]);
-            // la fonction splice permet ici de supprimer a valeur correspondant à l'index 0 dans le tableau copyArray
-            // au tour suivant, la valeur correspondant à l'index 0 dans le tableau copyArray sera automatiquement remplacée par la suivante tant qu'il y a une valeur dans le tableau
-            copyArray.splice(0,1);
+            // cette constante contient un nombre aléatoire généré entre 0 et la longueur du tableau copyArray
+            const randomNumber = Math.floor(Math.random() * Math.floor(valuesLeftInTheArray));
+            // cette constante contient la valeur du tableau copyArray corespondant à l'index randomNumber
+            const randomValue = copyArray[randomNumber];
+            // la valeur randomValue est stockée dans le tableau randomizeArray
+            randomizeArray.push(randomValue);
+            // la valeur randomValue est supprimée du tableau copyArray
+            // a chaque tour la longueur du tableau copyArray est réduite de 1
+            copyArray.splice(randomNumber, 1)
         }
-        // cette fonction permet d'envoyer chaque tableau team dans le tableau allArraysInOne
-        allArraysInOne.push(newArray);
-    }
-    // la fonction renvoie un tableau contenant toutes les valeurs du tableau originalArray
-    // séparées en tableau dont la taille est définie par la valeur de valuesPerArray
-    return allArraysInOne;
-}
-function displayArrays(originalArray)
-{
-    let copyArray = originalArray.slice();
-
-    let teams = document.querySelector('#teams');
-
-    teams.innerHTML = "";
-
-    let numbreElement = 0;
-
-    copyArray.forEach(function (element)
+        // la fonction renvoie le tableau randomizeArray contenant toutes les valeurs du tableau originalArray
+        // dans un ordre différent
+        return randomizeArray;
+    };
+    // cette fonction permet de séparer les valeurs contenues dans le tableau en argument en plusieurs tableaux de la même taille
+    // la taille des tableaux renvoyés est définie par l'argument valuesPerArray
+    const arraySeparator = (originalArray, valuesPerArray) =>
     {
-        numbreElement++;
+        // cette variable copie les valeurs de la variable en argument
+        // slice() permet d'éviter de modifier la variable originelle
+        let copyArray = originalArray.slice();
+        // cette variable crée un nouveau tableau vide
+        // ce tableau accueille les valeurs/tableaux renvoyés par la boucle for
+        const allArraysInOne = [];
+        // cette boucle tourne tant que la valeur de la variable i est inférieure à la longueur du tableau en argument de la fonction
+        // a chaque tour la valeure de la variable i augmente de la valeur de l'argument teamMatesPerTeam
+        for (let i = 0 ; i < originalArray.length ; i += valuesPerArray)
+        {
+            // cette variable crée un nouveau tableau vide
+            // ce tableau accueille les valeurs renvoyées par la boucle for
+            let newArray = [];
+            // cette boucle tourne tant que la valeur de la variable b est inférieur à la valeur de la variable valuesPerArray
+            for (let b = 0 ; b < valuesPerArray; b++)
+            {
+                // la fonction push permet ici de stocker la valeur correspondant à l'index 0 dans le tableau copyArray
+                newArray.push(copyArray[0]);
+                // la fonction splice permet ici de supprimer a valeur correspondant à l'index 0 dans le tableau copyArray
+                // au tour suivant, la valeur correspondant à l'index 0 dans le tableau copyArray sera automatiquement remplacée par la suivante tant qu'il y a une valeur dans le tableau
+                copyArray.splice(0,1);
+            }
+            // cette fonction permet d'envoyer chaque tableau team dans le tableau allArraysInOne
+            allArraysInOne.push(newArray);
+        }
+        // la fonction renvoie un tableau contenant toutes les valeurs du tableau originalArray
+        // séparées en tableau dont la taille est définie par la valeur de valuesPerArray
+        return allArraysInOne;
+    };
+    const displayArrays = originalArray =>
+    {
+        let copyArray = originalArray.slice();
 
-        let newDiv = document.createElement("div");
+        let teams = document.querySelector('#teams');
 
-        newDiv.setAttribute("class","team");
+        teams.innerHTML = "";
 
-        let newH3 = document.createElement("h3");
+        let numberElement = 0;
 
-        let newTitle = document.createTextNode("Team "+numbreElement);
+        copyArray.forEach(function (element)
+        {
+            numberElement++;
 
-        let newHr = document.createElement("hr");
+            let newDiv = document.createElement("div");
 
-        let newPara = document.createElement("p");
+            newDiv.setAttribute("class","team");
 
-        let newText = document.createTextNode(element);
+            let newH3 = document.createElement("h3");
 
-        newH3.appendChild(newTitle);
+            let newTitle = document.createTextNode("Team "+numberElement);
 
-        newDiv.appendChild(newH3);
+            let newHr = document.createElement("hr");
 
-        newDiv.appendChild(newHr);
+            let newPara = document.createElement("p");
 
-        newPara.appendChild(newText);
+            let newText = document.createTextNode(element);
 
-        newDiv.appendChild(newPara);
+            newH3.appendChild(newTitle);
 
-        let selectDiv = document.getElementById("teams");
+            newDiv.appendChild(newH3);
 
-        selectDiv.appendChild(newDiv);
-    })
-}
-function getValueById(id){
-    return idValue = document.querySelector('#'+id).value;
-}
+            newDiv.appendChild(newHr);
 
-(function (){
+            newPara.appendChild(newText);
+
+            newDiv.appendChild(newPara);
+
+            let selectDiv = document.getElementById("teams");
+
+            selectDiv.appendChild(newDiv);
+        })
+    };
+
+    const getValueById = id =>
+    {
+        return idValue = document.querySelector('#'+id).value;
+    };
+
     const button = document.querySelector('#form1Submit');
     button.addEventListener("click", (function(submit){
 
@@ -119,6 +121,13 @@ function getValueById(id){
 
         newForm.setAttribute('id', 'form2');
 
+        const newButton = document.querySelector('#form2').appendChild(document.createElement('button'));
+
+        newButton.innerText = 'Submit';
+
+        newButton.setAttribute('type', 'submit');
+
+        newButton.setAttribute('id', 'form2submit');
         for(let i = 0 ; i < totalParticipants ; i++) {
             const newdiv = document.querySelector('#form2').appendChild(document.createElement('div'));
             const newLabel = newdiv.appendChild(document.createElement('label'))
