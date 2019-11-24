@@ -126,8 +126,9 @@
         newButton.setAttribute('id', 'form2submit');
         for(let i = 0 ; i < getValueById('totalParticipants') ; i++) {
             const newdiv = document.querySelector('#form2').appendChild(document.createElement('div'));
-            const newLabel = newdiv.appendChild(document.createElement('label'))
-            const newInput = newdiv.appendChild(document.createElement('input'))
+            const newLabel = newdiv.appendChild(document.createElement('label'));
+            const newInput = newdiv.appendChild(document.createElement('input'));
+            newdiv.setAttribute('class', 'input')
             newInput.setAttribute('id', 'teamMates'+(i+1));
             newInput.setAttribute('value', 'Team Mate '+(i+1));
             newLabel.setAttribute('for', 'teamMates'+(i+1));
@@ -136,11 +137,13 @@
 
         const teamMates = [];
 
-        document.querySelector('#form2').addEventListener("submit",(function(){
+        document.querySelector('#form2').addEventListener("submit",((submit) => {
 
-            const inputs = document.getElementById("form2").elements;
+            submit.preventDefault();
+
+            const inputs = document.querySelector('#form2').elements;
             console.log(inputs);
-            const eachInputs = document.getElementsByTagName("input");
+            const eachInputs = document.getElementsByClassName("input");
 
 
             let inputByIndex = inputs[1].value; // permet d'avoir la valeur d'un input
@@ -150,6 +153,13 @@
             for(let i=0; i<eachInputs.length; i++) teamMates.push(inputs[i].value);
             console.log(teamMates);
         }));
+
+        let teamMatesPerTeam = 2;
+
+        const a = randomizeArray(teamMates);
+        const b = arraySeparator(a, teamMatesPerTeam);
+        const c = displayArrays(b);
+
     }));
 })();
 
