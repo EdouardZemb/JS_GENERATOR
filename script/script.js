@@ -1,4 +1,4 @@
-(function (){
+(() => {
     // cette fonction permet de renvoyer un tableau contenant les mêmes valeurs que le tableau en argument
 // mais dans un ordre différent
     const randomizeArray = originalArray =>
@@ -109,13 +109,9 @@
     };
 
     const button = document.querySelector('#form1Submit');
-    button.addEventListener("click", (function(submit){
+    button.addEventListener("click", ((submit) => {
 
         submit.preventDefault();
-
-        const teamMatesPerTeam = getValueById('teamMatesPerTeam');
-
-        const totalParticipants = getValueById('totalParticipants');
 
         const newForm = document.querySelector('main').appendChild(document.createElement('form'));
 
@@ -128,7 +124,7 @@
         newButton.setAttribute('type', 'submit');
 
         newButton.setAttribute('id', 'form2submit');
-        for(let i = 0 ; i < totalParticipants ; i++) {
+        for(let i = 0 ; i < getValueById('totalParticipants') ; i++) {
             const newdiv = document.querySelector('#form2').appendChild(document.createElement('div'));
             const newLabel = newdiv.appendChild(document.createElement('label'))
             const newInput = newdiv.appendChild(document.createElement('input'))
@@ -138,10 +134,23 @@
             newLabel.innerText = 'Team Mate '+(i+1)+' : ';
         }
 
-        // document.querySelector('#form2').appendChild(document.createElement('button'));
+        const teamMates = [];
 
+        document.querySelector('#form2').addEventListener("submit",(function(){
+
+            const inputs = document.getElementById("form2").elements;
+            console.log(inputs);
+            const eachInputs = document.getElementsByTagName("input");
+
+
+            let inputByIndex = inputs[1].value; // permet d'avoir la valeur d'un input
+            console.log(eachInputs.length); //work  permet d'avoir le nombre d'input
+            console.log("form value: "+inputByIndex);
+
+            for(let i=0; i<eachInputs.length; i++) teamMates.push(inputs[i].value);
+            console.log(teamMates);
+        }));
     }));
-
 })();
 
 /*
